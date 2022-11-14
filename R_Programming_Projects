@@ -1,5 +1,325 @@
 Links: Pizza Chatbot 
 https://replit.com/@aekkarachartpru/RHomeworkPizzaBotBatch06#main.r
 
+## Menu in Pizza restaurant
+
+# Pizza
+pizza_id <- c(1,2,3,4,5,6)
+pizza_name <- c("Original", "Hawaiian", "Seafood", "Mushroom", "Not order", "ESC")
+pizza_price <- c(10, 12, 14, 15, 0, 0)
+df_pizza <- data.frame(pizza_id, pizza_name, pizza_price)
+
+# Salad
+salad_id <- c(1,2,3,4)
+salad_name <- c("Original salad", "Ceasar salad", "Not order", "ESC")
+salad_price <- c(1, 2, 0, 0)
+df_salad <- data.frame(salad_id, salad_name, salad_price)
+
+# Appetizer
+appetizer_id <- c(1,2,3,4)
+appetizer_name <- c("Pepperoni Bread", "Hot Corn and Cheese Dip", "Not order", "ESC")
+appetizer_price <- c(4, 5, 0, 0)
+df_appetizer <- data.frame(appetizer_id, appetizer_name, appetizer_price)
+
+# Beverage
+bev_id <- c(1,2,3,4,5,6,7)
+bev_name <- c("Water", "Mineral", "Coke", "Sprite", "Beer", "Not order", "ESC")
+bev_price <- c(1, 2, 3, 3, 5, 0, 0)
+df_bev <- data.frame(bev_id, bev_name, bev_price)
+
+## End Menu
+
+# Greeting customers
+print("Welcome to Pizza Geek Restaurant !!!")
+
+# question 01
+print("What's your customer id ? ")
+cus_id <- readLines("stdin", n = 1)
+print( paste("Hi customer id:", cus_id))
+
+# question 02 (order pizza)
+print("What do yo want to order today?")
+print("Start with Pizza !!")
+print(df_pizza)
+# question 03 (type id pizza)
+print("Please type id what do you want or key 5 if you not order.")
+select_pizza <- readLines("stdin", n = 1)
+  if(select_pizza == 6) {
+    pizza <- "ESC"
+    pizza_price <- 0
+    print("You escape from order today.")
+    total <- pizza_price
+    print( paste("Total pizza price :", total, "$"))
+    print("If you want to order. Please re-login. ")
+    break
+  } else if (select_pizza == 5) {
+    pizza <- "Not order"
+    pizza_price <- 0
+    print("You not order pizza today.")
+    total <- pizza_price
+    print( paste("Total pizza price :", total, "$"))
+  } else if (select_pizza == 4) {
+    pizza <- "Mushroom"
+    pizza_price <- 15
+    print( paste("You order", pizza, "Pizza."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- pizza_price * items
+    print( paste("Total pizza price :", total, "$"))
+  } else if (select_pizza == 3) {
+    pizza <- "Seafood"
+    pizza_price <- 14
+    print( paste("You order", pizza, "Pizza."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- pizza_price * items
+    print( paste("Total pizza price :", total, "$"))
+  } else if (select_pizza == 2) {
+    pizza <- "Hawaiian"
+    pizza_price <- 12
+    print( paste("You order", pizza, "Pizza."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- pizza_price * items
+    print( paste("Total pizza price :", total, "$"))
+  } else if (select_pizza == 1) {
+    pizza <- "Original"
+    pizza_price <- 10
+    print( paste("You order", pizza, "Pizza."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- pizza_price * items
+    print( paste("Total pizza price :", total, "$"))
+  }
+total_pizza <- total
+
+# question 04 (order salad)
+print("---------------------------")
+print("What do yo want salad order today?")
+print(df_salad)
+# question 05 (type order salad)
+print("Please type id what do you want or key 3 if you not order.")
+select_salad <- readLines("stdin", n = 1)
+  if (select_salad == 4) {
+    salad <- "ESC"
+    salad_price <- 0
+    print("You escape from salad order today.")
+    total <- salad_price
+    print( paste("Total salad price :", total, "$"))
+    break
+  } else if (select_salad == 3) {
+    salad <- "Not order"
+    salad_price <- 0
+    print("You not order salad today.")
+    total <- salad_price
+    print( paste("Total salad price :", total, "$"))
+  } else if (select_salad == 2) {
+    salad <- "Ceasar salad."
+    salad_price <- 2
+    print( paste("You order", salad))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- salad_price * items
+    print( paste("Total salad price :", total, "$"))
+  } else if (select_salad == 1) {
+    salad <- "Original salad."
+    salad_price <- 1
+    print( paste("You order", salad))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- salad_price * items
+    print( paste("Total salad price :", total, "$"))
+  }
+total_salad <- total
+
+# question 06 (appetizer order)
+print("---------------------------")
+print("What do yo want appetizer order today?")
+print(df_appetizer)
+print("Please type id what do you want or key 3 if you not order.")
+select_appetizer <- readLines("stdin", n = 1)
+  if (select_appetizer == 4) {
+    appetizer <- "ESC"
+    appetizer_price <- 0
+    print("You escape from appetizer order today.")
+    total <- appetizer_price
+    print( paste("Total appetizer price :", total, "$"))
+    break
+  } else if (select_appetizer == 3) {
+    appetizer <- "Not order"
+    appetizer_price <- 0
+    print("You not order appetizer today.")
+    total <- appetizer_price
+    print( paste("Total appetizer price :", total, "$"))
+  } else if (select_appetizer == 2) {
+    appetizer <- "Hot Corn and Cheese Dip."
+    appetizer_price <- 5
+    print( paste("You order", appetizer))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- appetizer_price * items
+    print( paste("Total appetizer price :", total, "$"))
+  } else if (select_appetizer == 1) {
+    appetizer <- "Pepperoni Bread."
+    appetizer_price <- 4
+    print( paste("You order", appetizer))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- appetizer_price * items
+    print( paste("Total appetizer price :", total, "$"))
+  }
+total_app <- total
+  
+# question 07 (beverage order)
+print("---------------------------")
+print("What do yo want beverage order today?")
+print(df_bev)
+print("Please type id what do you want or key 6 if you not order.")
+select_bev <- readLines("stdin", n = 1)  
+  if(select_bev == 7) {
+    bev <- "ESC"
+    bev_price <- 0
+    print("You escape from order today.")
+    total <- bev_price
+    print( paste("Total beverage price :", total, "$"))
+    print("If you want to order. Please re-login. ")
+    break
+  } else if (select_bev == 6) {
+    bev <- "Not order"
+    bev_price <- 0
+    print("You not order beverage today.")
+    total <- bev_price
+    print( paste("Total beverage price :", total, "$"))
+  } else if (select_bev == 5) {
+    bev <- "Beer"
+    bev_price <- 5
+    print( paste("You order", bev, "."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- bev_price * items
+    print( paste("Total beverage price :", total, "$"))
+  } else if (select_bev == 4) {
+    bev <- "Sprite"
+    bev_price <- 3
+    print( paste("You order", bev, "."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- bev_price * items
+    print( paste("Total beverage price :", total, "$"))
+  } else if (select_bev == 3) {
+    bev <- "Coke"
+    bev_price <- 3
+    print( paste("You order", bev, "."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- bev_price * items
+    print( paste("Total beverage price :", total, "$"))
+  } else if (select_bev == 2) {
+    bev <- "Mineral"
+    bev_price <- 2
+    print( paste("You order", bev, "."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- bev_price * items
+    print( paste("Total beverage price :", total, "$"))
+  } else if (select_bev == 1) {
+    bev <- "Water"
+    bev_price <- 1
+    print( paste("You order", bev, "."))
+    print("How many items what do you want please type ?")
+    nums_items <- readLines("stdin", n = 1)
+    items <- as.numeric(nums_items)
+    total <- bev_price * items
+    print( paste("Total beverage price :", total, "$"))
+  } 
+total_bev <- total
+
+# question 08 (how to pay)
+grand_total <- total_pizza + total_salad + total_app + total_bev
+print( paste("Grand Total :", grand_total, "$"))
+print("Choose a payment method. Cash type 1 or Credit Card type 2")
+select_pay <- readLines("stdin", n = 1)
+  if (select_pay == 1) {
+    print( paste("You selected payment with cash. Amount", grand_total, "$"))
+  } else if (select_pay == 2) {
+    print( paste("You selected payment with credit card. Amount", grand_total, "$"))
+  }
+print("Succesfully payment.")
+print("---------------------------------")
+print("Thank you and have a nice pizza geek.")
+print("---------------------------------")
+
 links: "Pao-Ying-Chub" Game
 https://replit.com/@aekkarachartpru/RHomework-Pao-Ying-ChubBatch6#main.r
+
+## greeting
+print("+++++++++++++++++++++++++++++++++++++")
+print("Welcome to Pao-Ying-Chub competition.")
+print("+++++++++++++++++++++++++++++++++++++")
+print("About the Rules")
+print("1.Hammer win Scissor")
+print("2.Scissor win Paper")
+print("3.Paper win Hammer")
+print("=====================================")
+
+
+## count for summary
+count <- 0
+won <- 0
+draw <- 0
+lose <- 0
+
+while(TRUE) {
+    print("If you play 'Hammer' type 'h'")
+    print("If you play 'Scissor' type 's'")
+    print("If you play 'Paper' type 'p'")
+    print("If you wanna quit the game type 'Q'")
+    print("=====================================")
+  user <- tolower(readLines("stdin", n = 1))
+  bot <- c("h", "s", "p")
+  random <- sample(bot, size = 1)
+
+  if(user == "h" & random == "s" || user == "s" & random == "p" || user == "p" & random == "h") {
+    print( paste("You Play :", user))
+    print( paste("Bot Play :", random))
+    print("This Game You Won.")
+    count <- count + 1
+    won <- won + 1
+  } else if(user == "h" & random == "h" || user == "s" & random == "s" || user == "p" & random == "p") {
+    print( paste("You Play :", user))
+    print( paste("Bot Play :", random))
+    print("This Game You Draw.")
+    count <- count + 1
+    draw <- draw + 1
+  } else if(user == "h" & random == "p" || user == "s" & random == "h" || user == "p" & random == "s") {
+    print( paste("You Play :", user))
+    print( paste("Bot Play :", random))
+    print("This Game You Lose.")
+    count <- count + 1
+    lose <- lose + 1
+  } else if(user == "q") {
+    print("You quit the game.")
+    break
+  } else {
+    print("=====================================")
+  }
+
+}
+
+## summary stats
+print( paste("You Won", won, "times"))
+print( paste("You Lose", lose, "times"))  
+print( paste("You Draw", draw, "times"))
+print( paste("Total Play", count, "times"))
