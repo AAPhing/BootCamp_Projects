@@ -1,0 +1,124 @@
+Links:
+https://datalore.jetbrains.com/notebook/3xtKWkyMZylCKHBMds3lmx/YzPI2jBHgVe3pqwYNGEJ9I/
+
+# Pao Ying Choob
+# Import random
+import random
+
+# variables
+count = 0
+draw = 0
+won = 0
+lose = 0
+
+# Get user action
+while True:
+    user_action = input("Enter a choice (rock , paper, scissors): ")
+    user_action = user_action.lower()
+# Get bot action via random.choice
+    possible_actions = ["rock", "paper", "scissors"]
+    computer_action = random.choice(possible_actions)
+    print(f"You choose {user_action}, computer choose {computer_action}.")
+# Determine the winner
+# Count statistics (play,win,lose,draw)
+    if user_action == computer_action:
+        print(f"Both players selected {user_action}. It's a draw!")
+        count += 1
+        draw += 1
+    elif user_action == "rock":
+        if computer_action == "scissors":
+            print("Rock smashes scissors! You win!")
+            count += 1
+            won += 1
+        else:
+            print("Paper covers rock! You lose.")
+            count += 1
+            lose += 1
+    elif user_action == "paper":
+        if computer_action == "rock":
+            print("Paper covers rock! You win!")
+            count += 1
+            won += 1
+        else:
+            print("Scissors cuts paper! You lose.")
+            count += 1
+            lose += 1
+    elif user_action == "scissors":
+        if computer_action == "paper":
+            print("Scissors cuts paper! You win!")
+            count += 1
+            won += 1
+        else:
+            print("Rock smashes scissors! You lose.")
+            count += 1
+            lose += 1
+# Ask user to play again ?
+    play_again = input("Play again? (y/n): ")
+    print("----------------------------------")
+    print("----------------------------------")
+    if play_again.lower() != "y":
+# Summary results
+        print(f"You played {count} times.")
+        print(f"You won {won} times.")
+        print(f"You lose {lose} times.")
+        print(f"You draw {draw} times.")
+        print("----------------------------------")
+
+        break
+        
+# OOP -> ATM
+
+class ATM:
+    # double underscore => dunder
+    def __init__(self, name: str, password: str, comfirm_pin: int, balance: float):
+        self.name = name
+        self.password = password
+        self.confirm_pin = comfirm_pin
+        self.balance = balance 
+        print("Welcome to 'BNB ATM'")
+        print(f"\n Your name account is : {self.name}")
+        print(f"\n Your password is : {self.password}")
+        print(f"\n Your comfirm pin '6 digits' is : {self.confirm_pin}")
+        print(f"\n Your balance : {self.balance}$")
+
+    def check_balance(self):
+        message = f"Account: {self.name}, \nAvailable Balance: {self.balance}$"
+        print(message)
+    
+    def deposit(self):
+        amount_dep = float(input("Enter amount to be deposit:$"))
+        self.balance += amount_dep
+        print(f"Your Deposit: {amount_dep}$")
+        print("### Deposit Transaction Successfully ###")
+        print(f"\nAvailable Balance: {self.balance}$")
+        
+    def withdraw(self):
+        amount = float(input("Enter amount to be withdraw:$")) # input withdraw amount
+        if self.balance >= amount:
+            self.balance -= amount
+            print(f"You Withdraw: {amount}$")
+            print("### Withdraw Transaction Succesfully ###")
+            print(f"\nAvailable Balance {self.balance}$")
+        else:
+            print("\n Insufficient balance!!!  ")
+        
+
+    def transfer(self):
+        amount = float(input("Enter amount to be transfer: $")) # input transfer amount
+        if self.balance >= amount:
+            self.balance -= amount
+            print(f"You Transfer: {amount}$")
+            print("### Transfer Transaction Succesfully ###")
+            print(f"\nAvailable Balance {self.balance}$")
+        else:
+            print("\n Insufficient balance!!!  ")
+    
+    def change_name(self, new_acc_name: str):
+        self.name = new_acc_name 
+        print(f"New Account Name: {self.name}")
+        print("Your account name has been changed.")
+
+    def change_password(self, new_password: str):
+        self.password = new_password 
+        print(f"New Password: {self.password}")
+        print("Your password has been changed.")
